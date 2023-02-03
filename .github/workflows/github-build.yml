@@ -21,4 +21,4 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: push docker image
-        run: docker push site-counter:0.0.1
+        run: docker push hegemonies/site-counter:0.0.1
