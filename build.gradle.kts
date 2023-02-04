@@ -1,3 +1,4 @@
+import org.graalvm.buildtools.gradle.dsl.GraalVMExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -46,4 +47,10 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+graalvmNative {
+	binaries.all {
+		resources.autodetect()
+	}
 }
