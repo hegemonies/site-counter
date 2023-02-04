@@ -53,9 +53,3 @@ graalvmNative {
 		resources.autodetect()
 	}
 }
-
-nativeBuild {
-	this.resources {
-		this.autodetect()
-	}
-}
