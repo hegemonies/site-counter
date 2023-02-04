@@ -51,7 +51,7 @@ tasks.withType<Test> {
 // https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html#_native_image_options
 graalvmNative {
 	agent {
-		enabled.set(true) // Enables the agent
+//		enabled.set(true) // Enables the agent
 
 		// Copies metadata collected from tasks into the specified directories.
 		metadataCopy {
