@@ -1,4 +1,3 @@
-import org.graalvm.buildtools.gradle.dsl.GraalVMExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -52,5 +51,11 @@ tasks.withType<Test> {
 graalvmNative {
 	binaries.all {
 		resources.autodetect()
+	}
+}
+
+nativeBuild {
+	this.resources {
+		this.autodetect()
 	}
 }
