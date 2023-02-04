@@ -51,5 +51,6 @@ tasks.withType<Test> {
 graalvmNative {
 	binaries.all {
 		resources.autodetect()
+		buildArgs.add("--dir src/main/resources/META-INF/native-image")
 	}
 }
