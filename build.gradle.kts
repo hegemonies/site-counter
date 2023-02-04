@@ -48,9 +48,22 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
+// https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html#_native_image_options
 graalvmNative {
-	binaries.all {
-		resources.autodetect()
-		buildArgs.add("--dir src/main/resources/META-INF/native-image")
+	agent {
+		enabled.set(true) // Enables the agent
+
+		// Copies metadata collected from tasks into the specified directories.
+		metadataCopy {
+			inputTaskNames.add("run") // Tasks previously executed with the agent attached.
+			outputDirectories.add("src/main/resources/META-INF/native-image")
+			mergeWithExisting.set(true) // Instead of copying, merge with existing metadata in the output directories.
+		}
+	}
+
+	binaries {
+		named("main") {
+			useFatJar.set(true) // Instead of passing each jar individually, builds a fat jar
+		}
 	}
 }
