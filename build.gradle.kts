@@ -1,69 +1,59 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "3.0.2"
-	id("io.spring.dependency-management") version "1.1.0"
-	id("org.graalvm.buildtools.native") version "0.9.18"
-	kotlin("jvm") version "1.8.0"
-	kotlin("plugin.spring") version "1.8.0"
+    id("org.springframework.boot") version "3.0.2"
+    id("io.spring.dependency-management") version "1.1.0"
+    kotlin("jvm") version "1.8.0"
+    kotlin("plugin.spring") version "1.8.0"
+    id("org.jlleitschuh.gradle.ktlint") version "11.1.0"
+    id("com.google.cloud.tools.jib") version "3.3.1"
 }
 
 group = "site.hegemonies"
-version = "0.0.1"
+version = "0.1.1"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
-	implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
 
-	implementation("org.liquibase:liquibase-core:4.18.0")
+    implementation("org.liquibase:liquibase-core:4.18.0")
 
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
-	implementation("io.github.microutils:kotlin-logging-jvm:3.0.4")
+    implementation("io.github.microutils:kotlin-logging-jvm:3.0.4")
 
-	runtimeOnly("org.postgresql:postgresql")
-	runtimeOnly("org.postgresql:r2dbc-postgresql")
+    runtimeOnly("org.postgresql:postgresql")
+    runtimeOnly("org.postgresql:r2dbc-postgresql")
 
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("io.projectreactor:reactor-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.projectreactor:reactor-test")
 }
 
 tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "17"
-	}
+    kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+        jvmTarget = "17"
+    }
 }
 
 tasks.withType<Test> {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
 
-// https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html#_native_image_options
-graalvmNative {
-	agent {
-//		enabled.set(true) // Enables the agent
-
-		// Copies metadata collected from tasks into the specified directories.
-		metadataCopy {
-			inputTaskNames.add("run") // Tasks previously executed with the agent attached.
-			outputDirectories.add("src/main/resources/META-INF/native-image")
-			mergeWithExisting.set(true) // Instead of copying, merge with existing metadata in the output directories.
-		}
-	}
-
-	binaries {
-		named("main") {
-			useFatJar.set(true) // Instead of passing each jar individually, builds a fat jar
-		}
-	}
+jib {
+    from {
+        image = "azul/zulu-openjdk:17-latest"
+    }
+    to {
+        image = "hegemonies/site-counter:$version"
+    }
 }

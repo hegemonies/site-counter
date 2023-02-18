@@ -1,6 +1,5 @@
 package site.hegemonies.sitecounter.configuration
 
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import org.springframework.context.annotation.Bean

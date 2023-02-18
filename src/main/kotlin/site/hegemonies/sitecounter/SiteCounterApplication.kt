@@ -11,5 +11,5 @@ import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories
 class SiteCounterApplication
 
 fun main(args: Array<String>) {
-	runApplication<SiteCounterApplication>(*args)
+    runApplication<SiteCounterApplication>(*args)
 }
