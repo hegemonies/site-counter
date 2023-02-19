@@ -1,5 +1,7 @@
 core/.gradle
 proxy/.gradle
+.gradle/
+build/
 core/build/
 proxy/build/
 .idea
