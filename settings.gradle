@@ -1,0 +1,13 @@
+rootProject.name = "site-counter"
+
+def projectNames = ['core', 'proxy']
+
+projectNames.each { name ->
+    include name
+
+    def project = project(":${name}")
+    project.buildFileName = "build.gradle.kts"
+    if (!project.buildFile.exists()) {
+        throw new RuntimeException("Build file in module $name does not exist!")
+    }
+}

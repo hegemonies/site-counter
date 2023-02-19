@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/v0.1/2023-01-22_15-00_create-outbox-table.xml
+  - include:
+      file: db/changelog/v0.1/2023-02-19_20-00_create-last-id-table.xml
