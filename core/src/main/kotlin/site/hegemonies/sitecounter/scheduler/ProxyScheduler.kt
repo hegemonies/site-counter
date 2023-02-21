@@ -17,6 +17,10 @@ class ProxyScheduler(
     private val proxyProperties: ProxyProperties,
 ) {
 
+    init {
+        logger.info { "PROXY_TOKEN=${proxyProperties.token}" }
+    }
+
     @Scheduled(fixedDelay = 60000)
     fun collectCounters() {
         if (proxyProperties.enabled) {

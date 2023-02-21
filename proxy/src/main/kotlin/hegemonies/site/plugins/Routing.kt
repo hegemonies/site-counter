@@ -21,7 +21,9 @@ import org.jetbrains.exposed.sql.Database
 fun Application.configureRouting(database: Database) {
 
     val counterService = CounterService(database)
-    val appToken = environment.config.property("app.token").getString()
+    val appToken = environment.config.property("app.token").getString().also {
+        environment.log.debug("APP_TOKEN=$it")
+    }
 
     routing {
         post("/api/v1/counter/increment") {
