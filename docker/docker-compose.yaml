@@ -2,6 +2,7 @@ services:
   proxy:
     image: hegemonies/site-counter:proxy-0.0.1
     container_name: site-counter-proxy
+    restart: always
     ports:
       - "8080:8080"
     environment:
@@ -9,10 +10,14 @@ services:
 
   core:
     image: hegemonies/site-counter:core-0.1.1
-    container_name: site-counter-proxy
+    container_name: site-counter-core
+    restart: always
+    ports:
+      - "8000:8000"
     environment:
+      JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8 -XX:+ExitOnOutOfMemoryError -Xmx384m
       PROXY_TOKEN: token
-      PROXY_ADDRESS: proxy
+      PROXY_ADDRESS: https://site.com
       POSTGRES_HOST: localhost
       POSTGRES_PORT: 5432
       DATABASE_USERNAME: tester
