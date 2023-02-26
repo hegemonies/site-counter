@@ -1,12 +1,11 @@
-package site.hegemonies.sitecounter.dto
+package site.hegemonies.collector.dto
 
-import kotlinx.serialization.Serializable
+import java.io.Serializable
 
-@Serializable
-data class CounterDto(
+data class CounterEventDto(
     val id: Long,
     val clientAddress: String,
     val uri: String,
     val headers: Map<String, String>,
     val createdAt: Long,
-)
+) : Serializable

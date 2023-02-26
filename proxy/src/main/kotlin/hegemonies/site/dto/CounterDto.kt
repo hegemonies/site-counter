@@ -12,6 +12,7 @@ data class CounterDto(
     val clientAddress: String,
     val uri: String,
     val headers: Map<String, String>,
+    val createdAt: Long,
 ) {
     companion object {
         fun fromResultRaw(raw: ResultRow) =
@@ -19,7 +20,8 @@ data class CounterDto(
                 id = raw[Counter.id],
                 clientAddress = raw[Counter.clientAddress],
                 uri = raw[Counter.uri],
-                headers = Json.decodeFromString(raw[Counter.headers])
+                headers = Json.decodeFromString(raw[Counter.headers]),
+                createdAt = raw[Counter.createdAt]
             )
     }
 }

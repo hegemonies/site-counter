@@ -12,7 +12,7 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
 
-class CounterService(private val database: Database) {
+class CounterService(database: Database) {
 
     init {
         transaction(database) { SchemaUtils.create(Counter) }
@@ -27,6 +27,7 @@ class CounterService(private val database: Database) {
             it[Counter.clientAddress] = clientAddress
             it[Counter.uri] = uri
             it[Counter.headers] = Json.encodeToString(headers)
+            it[Counter.createdAt] = System.currentTimeMillis()
         }[Counter.id]
     }
 

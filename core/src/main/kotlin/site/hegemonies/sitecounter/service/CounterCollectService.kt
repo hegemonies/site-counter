@@ -52,9 +52,11 @@ class CounterCollectService(
 
         response.counters.asFlow().map { counter ->
             OutboxEventDto(
+                id = counter.id,
                 clientAddress = counter.clientAddress,
                 uri = counter.uri,
-                headers = counter.headers
+                headers = counter.headers,
+                createdAt = counter.createdAt,
             )
         }.collect { outboxEvent ->
             outboxService.sendEvent(outboxEvent)

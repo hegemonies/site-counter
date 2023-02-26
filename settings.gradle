@@ -1,6 +1,6 @@
 rootProject.name = "site-counter"
 
-def projectNames = ['core', 'proxy']
+def projectNames = ['core', 'proxy', 'collector']
 
 projectNames.each { name ->
     include name

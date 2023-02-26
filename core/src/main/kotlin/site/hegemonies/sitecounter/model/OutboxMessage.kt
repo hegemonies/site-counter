@@ -13,4 +13,5 @@ data class OutboxMessage(
     val topic: String,
     val key: String,
     val message: String,
+    val createdAt: Long,
 )
