@@ -22,3 +22,15 @@ services:
       POSTGRES_PORT: 5432
       DATABASE_USERNAME: tester
       DATABASE_PASSWORD: tester
+
+  collector:
+    image: hegemonies/site-counter:collector-1.0.0
+    container_name: site-counter-collector
+    restart: always
+    ports:
+      - "8100:8100"
+    environment:
+      JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8 -XX:+ExitOnOutOfMemoryError -Xmx384m
+      REDIS_HOST: localhost
+      REDIS_PORT: 6379
+      SPRING_KAFKA_BOOTSTRAP-SERVERS: localhost:9092
