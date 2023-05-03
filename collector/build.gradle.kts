@@ -1,10 +1,10 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "3.0.4"
+	id("org.springframework.boot") version "3.0.6"
 	id("io.spring.dependency-management") version "1.1.0"
-	kotlin("jvm") version "1.8.10"
-	kotlin("plugin.spring") version "1.8.10"
+	kotlin("jvm") version "1.8.21"
+	kotlin("plugin.spring") version "1.8.21"
 	id("org.jlleitschuh.gradle.ktlint") version "11.3.1"
 	id("com.google.cloud.tools.jib") version "3.3.1"
 	kotlin("plugin.serialization") version "1.8.0"
@@ -36,7 +36,7 @@ dependencies {
 
 	runtimeOnly("io.netty:netty-resolver-dns-native-macos:4.1.89.Final:osx-aarch_64")
 
-	implementation("io.github.crackthecodeabhi:kreds:0.8")
+	implementation("io.github.crackthecodeabhi:kreds:0.8.1")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.kafka:spring-kafka-test")
