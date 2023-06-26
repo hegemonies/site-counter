@@ -1,10 +1,10 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "3.0.6"
+    id("org.springframework.boot") version "3.1.1"
     id("io.spring.dependency-management") version "1.1.0"
-    kotlin("jvm") version "1.8.21"
-    kotlin("plugin.spring") version "1.8.21"
+    kotlin("jvm") version "1.8.22"
+    kotlin("plugin.spring") version "1.8.22"
     id("org.jlleitschuh.gradle.ktlint") version "11.3.1"
     id("com.google.cloud.tools.jib") version "3.3.1"
     kotlin("plugin.serialization") version "1.8.0"
@@ -16,6 +16,14 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral()
+}
+
+extra["coroutinesVersion"] = "1.7.1"
+
+dependencyManagement {
+    imports {
+        mavenBom("org.jetbrains.kotlinx:kotlinx-coroutines-bom:${property("coroutinesVersion")}")
+    }
 }
 
 dependencies {
