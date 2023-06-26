@@ -12,5 +12,5 @@ data class OutboxMessage(
     val createdAt: Instant,
     val topic: String,
     val key: String,
-    val message: String,
+    val message: String
 )
