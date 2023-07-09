@@ -8,5 +8,5 @@ data class CounterDto(
     val clientAddress: String,
     val uri: String,
     val headers: Map<String, String>,
-    val createdAt: Long,
+    val createdAt: Long
 )

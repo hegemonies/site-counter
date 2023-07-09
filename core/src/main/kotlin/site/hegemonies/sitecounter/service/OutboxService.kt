@@ -21,7 +21,7 @@ class OutboxService(
             timestamp = Instant.now(),
             topic = kafkaProperties.siteCounterTopic,
             key = UUID.randomUUID().toString(),
-            message = jsonMapper.writeValueAsString(outboxEventDto),
+            message = jsonMapper.writeValueAsString(outboxEventDto)
         )
         outboxRepository.save(outboxMessage)
     }

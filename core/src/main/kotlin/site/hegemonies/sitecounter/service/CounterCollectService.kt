@@ -19,7 +19,7 @@ import site.hegemonies.sitecounter.repository.ProxyCollectLastIdRepository
 class CounterCollectService(
     private val proxyProperties: ProxyProperties,
     private val proxyCollectLastIdRepository: ProxyCollectLastIdRepository,
-    private val outboxService: IOutboxService,
+    private val outboxService: IOutboxService
 ) : ICounterCollectService {
 
     private val webClient by lazy {
@@ -56,7 +56,7 @@ class CounterCollectService(
                 clientAddress = counter.clientAddress,
                 uri = counter.uri,
                 headers = counter.headers,
-                createdAt = counter.createdAt,
+                createdAt = counter.createdAt
             )
         }.collect { outboxEvent ->
             outboxService.sendEvent(outboxEvent)

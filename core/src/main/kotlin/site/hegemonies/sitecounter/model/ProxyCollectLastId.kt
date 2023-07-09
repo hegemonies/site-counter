@@ -8,5 +8,5 @@ import site.hegemonies.sitecounter.consts.TableNames
 data class ProxyCollectLastId(
     @Id
     val id: Long? = null,
-    val lastId: Long,
+    val lastId: Long
 )

@@ -14,7 +14,7 @@ import kotlin.system.measureTimeMillis
 @Component
 class ProxyScheduler(
     private val counterCollectService: ICounterCollectService,
-    private val proxyProperties: ProxyProperties,
+    private val proxyProperties: ProxyProperties
 ) {
 
     init {

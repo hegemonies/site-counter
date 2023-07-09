@@ -5,5 +5,5 @@ import site.hegemonies.sitecounter.dto.CounterDto
 
 @Serializable
 data class GetCountersResponse(
-    val counters: List<CounterDto>,
+    val counters: List<CounterDto>
 )

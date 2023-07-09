@@ -1,13 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "3.0.6"
+	id("org.springframework.boot") version "3.1.1"
 	id("io.spring.dependency-management") version "1.1.0"
-	kotlin("jvm") version "1.8.21"
-	kotlin("plugin.spring") version "1.8.21"
-	id("org.jlleitschuh.gradle.ktlint") version "11.3.1"
-	id("com.google.cloud.tools.jib") version "3.3.1"
-	kotlin("plugin.serialization") version "1.8.0"
+	kotlin("jvm") version "1.9.0"
+	kotlin("plugin.spring") version "1.9.0"
+	id("org.jlleitschuh.gradle.ktlint") version "11.5.0"
+	id("com.google.cloud.tools.jib") version "3.3.2"
+	kotlin("plugin.serialization") version "1.9.0"
 }
 
 group = "site.hegemonies"
@@ -28,7 +28,7 @@ dependencies {
 
 	implementation("io.github.microutils:kotlin-logging-jvm:3.0.5")
 
-	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.4.1")
+	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.5.1")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
 	implementation("org.springframework.boot:spring-boot-starter-actuator")

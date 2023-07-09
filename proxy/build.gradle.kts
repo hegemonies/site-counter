@@ -6,11 +6,11 @@ val h2_version: String by project
 val postgres_version: String by project
 
 plugins {
-    kotlin("jvm") version "1.8.10"
-    id("io.ktor.plugin") version "2.2.3"
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.10"
-    id("org.jlleitschuh.gradle.ktlint") version "11.3.1"
-    id("com.google.cloud.tools.jib") version "3.3.1"
+    kotlin("jvm") version "1.9.0"
+    id("io.ktor.plugin") version "2.3.2"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.0"
+    id("org.jlleitschuh.gradle.ktlint") version "11.5.0"
+    id("com.google.cloud.tools.jib") version "3.3.2"
 }
 
 group = "hegemonies.site"
