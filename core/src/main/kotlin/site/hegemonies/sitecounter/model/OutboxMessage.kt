@@ -9,7 +9,7 @@ import java.time.Instant
 data class OutboxMessage(
     @Id
     val id: Long? = null,
-    val timestamp: Instant,
+    val createdAt: Instant,
     val topic: String,
     val key: String,
     val message: String

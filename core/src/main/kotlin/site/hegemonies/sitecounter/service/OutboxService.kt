@@ -18,7 +18,7 @@ class OutboxService(
 
     override suspend fun sendEvent(outboxEventDto: OutboxEventDto) {
         val outboxMessage = OutboxMessage(
-            timestamp = Instant.now(),
+            createdAt = Instant.now(),
             topic = kafkaProperties.siteCounterTopic,
             key = UUID.randomUUID().toString(),
             message = jsonMapper.writeValueAsString(outboxEventDto)

@@ -10,8 +10,8 @@ import org.springframework.scheduling.annotation.EnableScheduling
 @EnableR2dbcRepositories
 @ConfigurationPropertiesScan
 @EnableScheduling
-class SiteCounterApplication
+class CoreSiteCounterApplication
 
 fun main(args: Array<String>) {
-    runApplication<SiteCounterApplication>(*args)
+    runApplication<CoreSiteCounterApplication>(*args)
 }

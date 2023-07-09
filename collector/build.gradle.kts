@@ -18,6 +18,14 @@ repositories {
 	mavenCentral()
 }
 
+extra["coroutinesVersion"] = "1.7.2"
+
+dependencyManagement {
+	imports {
+		mavenBom("org.jetbrains.kotlinx:kotlinx-coroutines-bom:${property("coroutinesVersion")}")
+	}
+}
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
