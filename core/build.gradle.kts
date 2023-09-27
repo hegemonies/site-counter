@@ -6,7 +6,7 @@ plugins {
     kotlin("jvm") version "1.9.10"
     kotlin("plugin.spring") version "1.9.10"
     id("org.jlleitschuh.gradle.ktlint") version "11.5.0"
-    id("com.google.cloud.tools.jib") version "3.3.2"
+    id("com.google.cloud.tools.jib") version "3.4.0"
     kotlin("plugin.serialization") version "1.9.10"
 }
 
@@ -67,7 +67,7 @@ tasks.withType<Test> {
 
 jib {
     from {
-        image = "azul/zulu-openjdk:17-latest"
+        image = "azul/zulu-openjdk:21-latest"
     }
     to {
         image = "hegemonies/site-counter:core-$version"
