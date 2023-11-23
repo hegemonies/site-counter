@@ -1,13 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "3.1.3"
-	id("io.spring.dependency-management") version "1.1.2"
-	kotlin("jvm") version "1.9.10"
-	kotlin("plugin.spring") version "1.9.10"
-	id("org.jlleitschuh.gradle.ktlint") version "11.5.0"
+	id("org.springframework.boot") version "3.2.0"
+	id("io.spring.dependency-management") version "1.1.4"
+	kotlin("jvm") version "1.9.20"
+	kotlin("plugin.spring") version "1.9.20"
+	id("org.jlleitschuh.gradle.ktlint") version "11.6.1"
 	id("com.google.cloud.tools.jib") version "3.4.0"
-	kotlin("plugin.serialization") version "1.9.0"
+	kotlin("plugin.serialization") version "1.9.21"
 }
 
 group = "site.hegemonies"
@@ -47,7 +47,6 @@ dependencies {
 	implementation("io.github.crackthecodeabhi:kreds:0.8.1")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.kafka:spring-kafka-test")
 }
 
 tasks.withType<KotlinCompile> {
@@ -63,7 +62,7 @@ tasks.withType<Test> {
 
 jib {
 	from {
-		image = "azul/zulu-openjdk:21-latest"
+		image = "bellsoft/liberica-runtime-container:jre-21-slim-glibc"
 	}
 	to {
 		image = "hegemonies/site-counter:collector-$version"

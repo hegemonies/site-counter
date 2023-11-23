@@ -45,7 +45,7 @@ dependencies {
 
 jib {
     from {
-        image = "azul/zulu-openjdk:17-latest"
+        image = "bellsoft/liberica-runtime-container:jre-21-slim-glibc"
     }
     to {
         image = "hegemonies/site-counter:proxy-$version"
