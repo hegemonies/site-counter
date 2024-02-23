@@ -5,6 +5,7 @@ import io.ktor.server.plugins.cachingheaders.*
 import io.ktor.http.content.*
 import io.ktor.http.*
 import io.ktor.server.application.*
+import io.ktor.server.plugins.cors.routing.*
 
 fun Application.configureHTTP() {
     install(Compression) {
@@ -23,5 +24,11 @@ fun Application.configureHTTP() {
                 else -> null
             }
         }
+    }
+    install(CORS) {
+        allowHost(host = "hegemonies.site", subDomains = listOf("api"))
+        allowMethod(HttpMethod.Options)
+        allowHeader(HttpHeaders.ContentType)
+        maxAgeInSeconds = 3600
     }
 }
