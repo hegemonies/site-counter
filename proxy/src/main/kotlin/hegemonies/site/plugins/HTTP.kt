@@ -26,7 +26,7 @@ fun Application.configureHTTP() {
         }
     }
     install(CORS) {
-        allowHost(host = "hegemonies.site", subDomains = listOf("api", "counter"))
+        allowHost(host = "hegemonies.site", schemes = listOf("http", "https"), subDomains = listOf("api", "counter"))
         allowMethod(HttpMethod.Options)
         allowMethod(HttpMethod.Post)
         allowMethod(HttpMethod.Get)
