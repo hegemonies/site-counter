@@ -28,6 +28,8 @@ fun Application.configureHTTP() {
     install(CORS) {
         allowHost(host = "hegemonies.site", subDomains = listOf("api", "counter"))
         allowMethod(HttpMethod.Options)
+        allowMethod(HttpMethod.Post)
+        allowMethod(HttpMethod.Get)
         allowHeader(HttpHeaders.ContentType)
         maxAgeInSeconds = 3600
     }
